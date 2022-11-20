@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package sistemajava;
+import java.sql.Connection;
 
 /**
  *
@@ -15,6 +16,8 @@ public class SistemaJava {
      */
     public static void main(String[] args) {
         new Login().setVisible(true);
+        ConexionDB cn = new ConexionDB();
+        Connection ret = cn.getConnection();
     }
     
 }
