@@ -16,8 +16,6 @@ public class SistemaJava {
      */
     public static void main(String[] args) {
         new Login().setVisible(true);
-        ConexionDB cn = new ConexionDB();
-        Connection ret = cn.getConnection();
     }
     
 }
