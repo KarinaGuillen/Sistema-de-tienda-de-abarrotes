@@ -16,6 +16,12 @@ public class SistemaJava {
      */
     public static void main(String[] args) {
         new Login().setVisible(true);
+        
+        ConexionDB con = new ConexionDB();
+        Connection re = con.getConnection();
+        
+        //Transaccion tr = new Transaccion(1, "No se", "Pagado", 8.58f, "28/oct/2022", 1);
+        //tr.display_transaccion();
     }
     
 }
