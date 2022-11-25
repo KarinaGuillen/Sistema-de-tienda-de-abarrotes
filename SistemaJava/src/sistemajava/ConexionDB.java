@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 public class ConexionDB {
-    public static final String URL = "jdbc:mysql://localhost:3306/SistemaGestion";
+    public static final String URL = "jdbc:mysql://localhost:3306/SistemaGestion?verifyServerCertificate=false&useSSL=true";
     public static final String USER = "root";
     public static final String PASSWORD = "3%9Ib3M"; // <--- aqui va la contraseña de tu mysql
 
