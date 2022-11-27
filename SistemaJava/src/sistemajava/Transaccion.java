@@ -16,8 +16,9 @@ public class Transaccion {
     private final float monto;
     private final String fecha;
     private final int id_usuario;
+    private final int tipo_transaccion;
     
-    public Transaccion(String descripcion, String estado, float monto, String fecha, int id_usuario)
+    public Transaccion(String descripcion, String estado, float monto, String fecha, int id_usuario, int tipo_transaccion)
     {    
         
         this.descripcion = descripcion;
@@ -25,6 +26,7 @@ public class Transaccion {
         this.monto = monto;
         this. fecha = fecha;
         this.id_usuario = id_usuario;
+        this.tipo_transaccion=tipo_transaccion;
     }
     
     
@@ -52,7 +54,10 @@ public class Transaccion {
     {
         return id_usuario;
     } 
-    
+      public int get_tipo_transaccion()
+    {
+        return tipo_transaccion;
+    } 
     
     public void insert_Transaction(Connection re)
     {     
@@ -62,7 +67,8 @@ public class Transaccion {
           try{
               // Ejecuta la declaracion insert SQL
               rg = re.createStatement();
-              rg.executeUpdate("INSERT INTO transaccion(Descripcion, Estado, Monto, Fecha, id_usuario) VALUES ('"+ descripcion + "', '" + estado + "', '" + monto + "', '" + fecha + "', '" + id_usuario + "')");
+              //comentar cuando ya no se ocupe(despues de implementar los insert de ingresos y egresos
+              rg.executeUpdate("INSERT INTO transaccion(Descripcion, Estado, Monto, Fecha, id_usuario, Tipo_transaccion) VALUES ('"+ descripcion + "', '" + estado + "', '" + monto + "', '" + fecha + "', '" + id_usuario + "', '" + tipo_transaccion + "')");
               
               // Imprimimos un mensaje
               JOptionPane.showMessageDialog(null, "La transacción se ha registrado con exito!");
