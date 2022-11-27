@@ -144,35 +144,17 @@ public class Login extends javax.swing.JFrame {
         // Se hace el llamado a la conexion de la DB
         ConexionDB cn = new ConexionDB();
         Connection ret = cn.getConnection();
-        
-        //Preparamos la query select para obtener el usuario
-        String sql;
+        //se obtiene el usuario y ocntraseña
         String usuario;
         String clave;
         usuario = jTextField1.getText();
         clave = new String(jPasswordField1.getPassword());
-        sql = "SELECT id_usuario FROM usuario WHERE Nombre = '" +usuario + "' AND Contrasena = '" + clave + "' ;";
-        System.out.println(sql);
-       
-        //Se agrega try catch para la consulta en sql
-        try{
-            Statement rg = ret.createStatement();
-            ResultSet res = rg.executeQuery(sql);
-                 
-            if(res.first())
-            {
-                this.dispose();
-                JOptionPane.showMessageDialog(null, "Ingreso exitoso");
-                new Interfaz().setVisible(true);
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Contraseña o usuario incorrecto");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No existen usuarios");
-        }
+        // Insertamos una transacción
+        Usuario acceso_user = new Usuario(usuario, clave);
         
-        
+        // Registramos una transacción a la base de datos
+        acceso_user.acceder(ret);
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
