@@ -309,6 +309,11 @@ public class Interfaz extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jButton3.setText("Guardar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTextField6.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
@@ -518,6 +523,10 @@ public class Interfaz extends javax.swing.JFrame {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
