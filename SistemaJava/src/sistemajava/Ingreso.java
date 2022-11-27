@@ -31,7 +31,7 @@ public class Ingreso {
         return costo;
     }
     
-    public int acceder()
+    public int calcular_cambio()
     {
         int cambio;
         cambio = monto_pagado - costo;
