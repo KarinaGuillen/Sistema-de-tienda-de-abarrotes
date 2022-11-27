@@ -16,6 +16,16 @@ public class SistemaJava {
      */
     public static void main(String[] args) {
         new Login().setVisible(true);
+        
+        // Creamos la conexión a la base de datos
+        ConexionDB con = new ConexionDB();
+        Connection re = con.getConnection();
+        
+        // Insertamos una transacción
+        Transaccion tr = new Transaccion(1, "Total de los ingresos de la semana", "Pagado", 85.47f, "2022-11-24", 1);
+        
+        // Registramos una transacción a la base de datos
+        tr.insert_Transaction(re);
     }
     
 }
