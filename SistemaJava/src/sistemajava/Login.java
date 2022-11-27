@@ -149,10 +149,10 @@ public class Login extends javax.swing.JFrame {
         String clave;
         usuario = jTextField1.getText();
         clave = new String(jPasswordField1.getPassword());
-        // Insertamos una transacción
+       
         Usuario acceso_user = new Usuario(usuario, clave);
         
-        // Registramos una transacción a la base de datos
+      
         acceso_user.acceder(ret);
     
     }//GEN-LAST:event_jButton1ActionPerformed
