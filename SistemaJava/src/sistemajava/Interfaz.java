@@ -6,6 +6,15 @@
 package sistemajava;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.Date;
+import java.util.Calendar;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Arrays;
 
 /**
  *
@@ -47,6 +56,7 @@ public class Interfaz extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -122,6 +132,11 @@ public class Interfaz extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jButton4.setText("Guardar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jCalendar2.setToolTipText("");
         jCalendar2.setFocusable(false);
@@ -136,18 +151,19 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField8)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(200, 200, 200)
+                                .addGap(192, 192, 192)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(110, 110, 110))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)
                                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(891, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,9 +179,9 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addGap(49, 49, 49)
                         .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Egreso", jPanel3);
@@ -209,6 +225,14 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Fin");
 
+        jButton5.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jButton5.setText("Consultar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -226,9 +250,11 @@ public class Interfaz extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jCalendar3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jLabel3))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,19 +263,20 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jCalendar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCalendar4, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
+                            .addComponent(jCalendar4, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(173, 173, 173))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Reporte", jPanel4);
@@ -450,6 +477,11 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        float valor_1 = Float.parseFloat(jTextField6.getText()); 
+        float valor_2 = Float.parseFloat(jTextField3.getText());
+        
+        Ingreso dar_cambio = new Ingreso(valor_1, valor_2);
+        jEditorPane1.setText(Float.toString(dar_cambio.calcular_cambio()));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -527,8 +559,125 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
         // TODO add your handling code here:
+        // Se hace el llamado a la conexion de la DB
+        ConexionDB cn = new ConexionDB();
+        Connection ret = cn.getConnection();
+        
+        //se obtiene el usuario y ocntraseña
+        String descripcion;
+        float monto_pagado;
+        String estado;
+        int year; 
+        int mes; 
+        int dia; 
+        float cambio;
+        
+        descripcion = jTextField2.getText();
+        monto_pagado = Float.parseFloat(jTextField6.getText()); 
+        estado = (String) jComboBox1.getSelectedItem();
+        cambio = Float.parseFloat(jTextField3.getText());  
+        year = jCalendar1.getCalendar().get(Calendar.YEAR);
+        mes = jCalendar1.getCalendar().get(Calendar.MARCH);
+        dia = jCalendar1.getCalendar().get(Calendar.DAY_OF_MONTH);
+        Date fecha =  new Date(year-1900, mes, dia);
+        //System.out.println(fecha);
+        
+        
+        Transaccion dato_ingreso = new Transaccion(descripcion, estado, monto_pagado, fecha, 2, 1);
+        dato_ingreso.insert_Transaction(ret);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        while (modelo.getRowCount() > 0)
+        {
+        modelo.removeRow(0);
+        }
+        ConexionDB cn = new ConexionDB();
+        Connection ret = cn.getConnection();
+        Statement rg;
+        ResultSet res;
+        String sql;
+        String tipo;
+        int yearr1; 
+        int mesr1; 
+        int diar1;
+        int yearr2; 
+        int mesr2; 
+        int diar2; 
+        int tipoint = 0;
+        tipo = (String) jComboBox3.getSelectedItem();
+        yearr1 = jCalendar4.getCalendar().get(Calendar.YEAR);
+        mesr1 = jCalendar4.getCalendar().get(Calendar.MARCH);
+        diar1 = jCalendar4.getCalendar().get(Calendar.DAY_OF_MONTH);
+        Date fecha2 =  new Date(yearr1-1900, mesr1, diar1);
+        yearr2 = jCalendar3.getCalendar().get(Calendar.YEAR);
+        mesr2 = jCalendar3.getCalendar().get(Calendar.MARCH);
+        diar2 = jCalendar3.getCalendar().get(Calendar.DAY_OF_MONTH);
+        Date fecha3 =  new Date(yearr2-1900, mesr2, diar2);
+        if (tipo == "Ingreso"){
+            tipoint=1;
+        }
+        if (tipo == "Egreso"){
+            tipoint=2;
+        }
+
+        try{
+              // Ejecuta la declaracion select SQL
+              rg = ret.createStatement();
+
+              // Consulta: id_transaccion, descripcion, estado, fecha, monto
+              //sql = "SELECT id_transaccion, Descripcion, Estado, Fecha, Monto, Tipo_transaccion FROM Transaccion";                  
+              sql = "SELECT id_transaccion, Descripcion, Estado, Fecha, Monto, Tipo_transaccion FROM Transaccion WHERE tipo_transaccion = "+ tipoint + " AND Fecha BETWEEN \" " + fecha2 + "\" AND  \" " + fecha3 + "\"";
+              res = rg.executeQuery(sql);
+              res.first();
+
+              do
+              {
+                  String[] fila = {res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5)};
+                  //System.out.println(tipoint);
+                  modelo.addRow(fila);
+              }while (res.next());
+
+
+              // Cerramos la conexión de la base de datos
+              ret.close();
+
+          }catch(SQLException e){
+              // En caso de error se imprime un mensaje
+               JOptionPane.showMessageDialog(null, e, "No existen datos", JOptionPane.ERROR_MESSAGE);
+          }
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+         // Se hace el llamado a la conexion de la DB
+        ConexionDB cn = new ConexionDB();
+        Connection ret = cn.getConnection();
+        
+        //se obtiene el usuario y ocntraseña
+        String descripcion_egreso;
+        float monto_pagado_egreso;
+        String estado_egreso;
+        int year_egreso;
+        int mes_egreso;
+        int dia_egreso; 
+        
+        descripcion_egreso = jTextField8.getText();
+        monto_pagado_egreso = Float.parseFloat(jTextField5.getText()); 
+        estado_egreso = (String) jComboBox2.getSelectedItem();
+        year_egreso = jCalendar2.getCalendar().get(Calendar.YEAR);
+        mes_egreso = jCalendar2.getCalendar().get(Calendar.MARCH);
+        dia_egreso = jCalendar2.getCalendar().get(Calendar.DAY_OF_MONTH);
+        Date fecha_egreso =  new Date(year_egreso-1900, mes_egreso, dia_egreso);
+        
+        Transaccion dato_egreso = new Transaccion(descripcion_egreso, estado_egreso, monto_pagado_egreso, fecha_egreso, 2, 2);
+        dato_egreso.insert_Transaction(ret);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -570,6 +719,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar2;
     private com.toedter.calendar.JCalendar jCalendar3;

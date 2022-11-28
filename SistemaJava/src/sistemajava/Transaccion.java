@@ -1,5 +1,6 @@
 package sistemajava;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -14,11 +15,11 @@ public class Transaccion {
     private final String descripcion;
     private final String estado;
     private final float monto;
-    private final String fecha;
+    private final Date fecha;
     private final int id_usuario;
     private final int tipo_transaccion;
     
-    public Transaccion(String descripcion, String estado, float monto, String fecha, int id_usuario, int tipo_transaccion)
+    public Transaccion(String descripcion, String estado, float monto, Date fecha, int id_usuario, int tipo_transaccion)
     {    
         
         this.descripcion = descripcion;
@@ -45,7 +46,7 @@ public class Transaccion {
         return monto;
     }
     
-    public String get_fecha()
+    public Date get_fecha()
     {
         return fecha;
     }

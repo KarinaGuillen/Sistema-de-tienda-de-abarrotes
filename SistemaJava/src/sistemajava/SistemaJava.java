@@ -4,6 +4,7 @@
  */
 package sistemajava;
 import java.sql.Connection;
+import java.sql.Date;
 
 /**
  *
@@ -21,11 +22,14 @@ public class SistemaJava {
         ConexionDB con = new ConexionDB();
         Connection re = con.getConnection();
         
+        Reporte mostrar_reporte = new Reporte("1","2022-11-15", "2022-11-30"); 
+        
+        mostrar_reporte.display_report(re);
         // Insertamos una transacción
-        Transaccion tr = new Transaccion("Compra unitaria", "Pagado", 85.47f, "2022-11-24", 1, 1);
+        //Transaccion tr = new Transaccion("Compra unitaria", "Pagado", 85.47f, new Date(122,8,3), 1, 1);
         
         // Registramos una transacción a la base de datos
-        tr.insert_Transaction(re);
+        //tr.insert_Transaction(re);
     }
     
 }
