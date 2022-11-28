@@ -10,10 +10,10 @@ package sistemajava;
  */
 public class Ingreso {
     
-    private final int monto_pagado;
-    private final int costo;
+    private final float monto_pagado;
+    private final float costo;
     
-    public Ingreso(int monto_pagado, int costo)
+    public Ingreso(float monto_pagado, float costo)
     {    
         
         this.monto_pagado = monto_pagado;
@@ -21,19 +21,19 @@ public class Ingreso {
            
     }
     
-    public int get_monto_pagado()
+    public float get_monto_pagado()
     {
         return monto_pagado;
     }
     
-    public int get_costo()
+    public float get_costo()
     {
         return costo;
     }
     
-    public int calcular_cambio()
+    public float calcular_cambio()
     {
-        int cambio;
+        float cambio;
         cambio = monto_pagado - costo;
         return cambio;
         
